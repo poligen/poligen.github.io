@@ -11,7 +11,6 @@ categories: thought
 
 最近 HBO 的一部新影集[《Westworld》 ](http://www.imdb.com/title/tt0475784/?ref)很紅。網路上都有很多人討論。或許是因為最近 Deepmind 打敗了人類的圍棋界高手，好像一下子，我們就要活在機器人的世界了。這部影集和去年的[Ex Machina](http://www.imdb.com/title/tt0470752/) 有異曲同工之妙。這部片的編劇也是我很喜歡的作家 Michael Crichton，是醫學院畢業不當醫生，也是侏羅紀公園的作者。只可惜 2008 年去逝後，就少看到他的作品。不過很開心，還是有機會看到他的遺作。至少在 HBO 改編之下，探究了很多很深刻的問題。
 
-{% youtube "https://www.youtube.com/watch?IuS5huqOND4" %}
 
 <!--more-->
 
