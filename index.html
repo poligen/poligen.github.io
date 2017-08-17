@@ -1,0 +1,49 @@
+---
+layout: post-index
+title: 天與雲與山與水上下一白，湖上影子惟長堤一痕
+description:
+comments: false
+image:
+  feature: snow.jpg
+---
+
+{% for post in paginator.posts %}
+<article class="hentry">
+  <header>
+    {% if post.image.feature %}
+      <div class="entry-image-index">
+
+          <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
+             {% if page.image.feature contains 'http://' or page.image.feature contains 'https://' %}
+              <img src="{{ post.image.feature }}" alt="{{ post.title }}">
+              {% else %}
+              <img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}">
+              {% endif %}
+          </a>
+      </div><!-- /.entry-image -->
+    {% endif %}
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="{{ post.date | date_to_xmlschema }}"><a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%B %d, %Y" }}</a></time></span><span class="author vcard"><span class="fn"><a href="{{ site.url }}/about/" title="About {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
+      {% if site.reading_time %}
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+        {% include read-time-index.html %}
+      </span><!-- /.entry-reading-time -->
+      {% endif %}
+    </div><!-- /.entry-meta -->
+    {% if post.link %}
+      <h1 class="entry-title"><a href="{{ site.url }}{{ post.url }}" class="permalink" rel="bookmark" title="{{ post.title }}"><i class="fa fa-bookmark"></i></a> <a href="{{ post.link }}">{{ post.title }}</a></h1>
+    {% else %}
+      <h1 class="entry-title"><a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a></h1>
+    {% endif %}
+  </header>
+  <div class="entry-content">
+      {{ post.excerpt }}
+      {% if post.excerpt != post.content %}
+      <a href="{{site.url}}{{post.url}}">Read more...</a>
+      {% endif %}
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+{% endfor %}
+
+{% include pagination.html %}
