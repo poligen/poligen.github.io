@@ -46,6 +46,7 @@ plugins:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-feed
+  - jekyll-youtube
 sass:
   sass_dir: _sass
   style: compressed
