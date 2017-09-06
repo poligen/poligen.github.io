@@ -59,7 +59,7 @@ Plug 家庭套餐
 Hello, Plug
 -----------
 
-如果進入我的 `my_plug~裡, ~mix deps.get`, `iex -S mix run`
+如果進入我的 my_plug~裡, `mix deps.get`, `iex -S mix run`
 
 到 `localhost:4000`, 你就可以看到, `Hello world` 。 太神奇啦！以下是最主要的： 斯斯有三種，但 plug 有兩種，哪兩種？ `Functional plugs` 和 `Module plugs`, 我們以下的例子是 module plugs, 會有一個 `call/2` function, 和一個 `init/1` function。 `init/1` 會在 compiling time 執行，而 `call/2` 會在 run time。(`call/2` 的功能像是 functional plug), functional plug 就是會接受 `connection` ，再返回一個新的 `connection` (因為 elixir 的 state 都是 immutable 的，你可以重新指定回本來的 `conn`) 那什麼是 `conn`? 我們晚點再細談，這裡你可以先想說，我們把 http 的 request 用 `Plug.Conn` 裡的 Elixir Struct，把 request 的 key-value 包進去[ %Plug.Conn{}](https://github.com/elixir-plug/plug/blob/v1.4.3/lib/plug/conn.ex#L3), 所以你在 `Phoenix Framework` 裡看到的 `conn` 大多數都可以想成是一個 %Plug.Conn{}的 struct。
 
@@ -155,7 +155,7 @@ Plug.Builder
 
 > Multiple plugs can be defined with the plug/2 macro, forming a pipeline. The plugs in the pipeline will be executed in the order
 
-好幾個 `plugs`，可以組合在一起，然後被按照順序執行。如果你常在 `Phoenix` 裡看到 `pipeline` function, 注意, 這是 `phoenix`的 DSL，不是 ~Plug` 的， `Plug` 裡沒有這個 function！
+好幾個 `plugs`，可以組合在一起，然後被按照順序執行。如果你常在 `Phoenix` 裡看到 `pipeline` function, 注意, 這是 `phoenix`的 DSL，不是 `Plug` 的， `Plug` 裡沒有這個 function！
 
 不過如果你讀 phoenix 的 source code，就可以看到 `pipeline/2` 有使用 `Plug.Builder` 的方式：
 
