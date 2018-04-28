@@ -18,7 +18,6 @@ tweet:](https://twitter.com/nntaleb/status/966990489617616896)
 > "Science and reason is the best we have" is a statement that is both
 > pseudoscientific & irrational. It conflates science and scientism.
 > Science is rigorous, makes no claims outside a v. narrow domain.
-> 
 > "Tradition, risk management, and Skin in the Game is the best we
 > have".
 
