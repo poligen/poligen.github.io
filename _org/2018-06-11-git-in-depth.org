@@ -1,0 +1,101 @@
+#+BEGIN_SRC html
+---
+title: my personal git cheatsheet and notes
+date: 2018-06-11 00:32:00
+tags: [ git ]
+---
+#+END_SRC
+
+* This is the short note of my learning on the topic of ~GIT~.
+
+** key and value
+GIT use key and value to store data; the ~key~ is hash of the data and the ~Value~ is the data you want to store. It use ~SHA1~ to generate the key. 
+
+** commits 
+a commit contains metadata included: author, date, message, and parent commit. You can use ~HEAD~ or ~Tags~ as pointers to commits
+
+** where code lives
+there are three area:
+- working area
+- Staging area
+- Repository
+
+#+BEGIN_SRC 
+
+- working area -> (git add) -> staging area -> (git commit) -> repository
+
+- working area <- (git checkout) <- staging area
+#+END_SRC
+
+** Stashing
+you can use ~git stash~ to save the current working area and then checkout to different branch to working
+- git stash list
+- git stash apply(apply the last stash)
+- git stash apply stash@{0}(apply a specific stash)
+- git stash clear
+
+** References
+- Tags
+- Branches
+- HEAD
+
+~git tag -a v1.0 -m "version 1 of the blog"~
+
+*** detached head
+if you checkout the branch with the commit SHA, you have to add reference e.g. new branche tag or new commit; otherwise, when you checkout, you are in "detached head", you can not check out back here.
+** Merged
+merged commits are just commits, and the ~fast forward~ means that, there is no commits on the base of the master, when you merged the branch to master, it will add all the commits from the branch to the master.(if you apply the merged commit from the branch to the master.)
+
+~git merge --no-ff~
+
+you can use this "no fast forward" feature, to use only "a merge commit" instead of all the feature commits into the master.
+
+*** merge conflicts
+you have to fix all the conflicts before being merged.
+#+BEGIN_SRC bash
+git config rerere.enabled true --global
+#+END_SRC
+
+turn on ~rerere~ (reuse, recorded, resolution) it will record your fix conflicts and then apply to the rest of the conflicts. 
+
+* History & DIFFS
+** good commit message
+- use ~fix~ not ~fixed~ in commit message
+- use short description
+
+** git log
+example
+#+BEGIN_SRC bash
+git log --since="yesterday"
+git log --since="2 weeks ago"
+#+END_SRC
+
+* fixing mistakes 
+
+- you can use ~git checkout~ to move to previous area.
+- ~git clean~ will delete the working area 
+  - ~f~: force
+  - ~d~: clean directories
+  - ~dry-run~: would tell you what will be deleted first
+
+- git reset --soft HEAD(the reference sign)
+move head, the working/stage area are the same file
+- git reset --hard HEAD(the reference sign)
+ the working area/staged will be overwritten
+- git revert:
+you use ~git revert~ when you have already share the commit, it will create new commits
+
+
+* Rewrite history
+** amend a commit
+you cannot amend a file if you shared it. and it is a quick and easy shortcut to change the previous commits
+
+just use ~git commit --amend~. it will generate the new SHA1 key and add the old and the new-adding to new SHA1 key with new reference.
+
+** rebase
+when to use?
+if the master and the branch are very diverged. and you don't want the messy merge commit history. you can use ~rebase~. It means that git a commit new parent.(a new base)
+
+- ~git rebase -i~ : open the interactive mode
+pick, reword, edit, squash, fixup, exec, drop
+- you can ~git rebase --abort~ to undo all the things.

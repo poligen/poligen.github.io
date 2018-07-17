@@ -1,0 +1,14 @@
+[[https://github.com/politza/pdf-tools/issues/308][With dotspacemacs-line-numbers t, scrolling PDFs is slow and sluggish. PDF wi...]]
+#+BEGIN_SRC elisp
+   dotspacemacs-line-numbers '(:relative t
+                               :disabled-for-modes dired-mode
+                                                   doc-view-mode
+                                                   markdown-mode
+                                                   org-mode
+                                                   pdf-view-mode
+                              )
+
+#+END_SRC
+
+[[https://codearsonist.com/reading-for-programmers][Piotr Limanowski 🔥 Reading for Programmers]]
+如何使用interleave的好文
