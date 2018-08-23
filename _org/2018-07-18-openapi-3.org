@@ -1,0 +1,26 @@
+** 簡介
+** openapi 3
+因為實在是太少中文資料了。但是我覺得又很重要，只好寫在這邊給未來的自己
+[[http://apihandyman.io/writing-openapi-swagger-specification-tutorial-part-1-introduction/][api handyman]] 有完整的tutorial，但是是2.0的，所以只好自己一邊寫swagger editor，一邊做筆記
+
+*** openapi
+這個是必要欄位，以前是 ~swagger: "2.0"~ , 現在要用 ~openapi: 3.0.x~
+*** info
+也是必要欄位，裡面至少要有 ~title~ 和 ~verison~ ，其他的description, termsOfSeverice, contact, license, 都不一要
+*** servers:
+非必要
+
+** json schema
+http://json-schema.org/learn/
+
+** security
+設定也不難，如果是在elixir下用guardian套件的話，現在openapi 有支援bearer的jwt
+https://swagger.io/docs/specification/authentication/bearer-authentication/
+#+BEGIN_SRC yaml
+components:
+  securitySchemes:
+    Guardian:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+#+END_SRC
